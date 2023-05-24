@@ -7,16 +7,25 @@
                 <input-comp placeholder="Возраст" @inputEmit="(value) => (age = value)" :onlyNumbers="true" />
             </div>
         </div>
+
+        <div class="children-wrap">
+            <div class="children-header-and-btn">
+                <h3>Дети</h3>
+                <add-btn-comp>Добавить ребёнка</add-btn-comp>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 import InputComp from "@/components/InputComp.vue";
+import AddBtnComp from "@/components/buttons/AddBtnComp.vue";
 
 export default {
     name: "main-page",
     components: {
         InputComp,
+        AddBtnComp,
     },
     data() {
         return {
@@ -37,5 +46,11 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 33px;
+}
+
+.children-header-and-btn {
+    display: flex;
+    justify-content: space-between;
 }
 </style>
