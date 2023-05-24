@@ -27,7 +27,7 @@
                 @ageInputEmit="(value) => (children[index].age = value)"
                 @deleteChild="(index) => deleteChild(index)"
             />
-            <primary-btn-comp v-if="children.length > 0" :disabled="checkFillInputs" @click="saveParent"
+            <primary-btn-comp v-if="children.length > 0" :disabled="!checkFillInputs" @click="saveParent"
                 >Сохранить</primary-btn-comp
             >
         </div>

@@ -16,7 +16,7 @@ export default {
 
     computed: {
         disabledStyle() {
-            return this.disabled ? null : { background: "#DDDDDD", pointerEvents: "none" };
+            return this.disabled ? { background: "#DDDDDD", pointerEvents: "none" } : null;
         },
     },
 };
