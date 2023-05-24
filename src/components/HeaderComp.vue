@@ -116,4 +116,9 @@ export default {
     gap: 24px;
     color: #8d8d8d;
 }
+
+.header-menu-wrap p:hover {
+    color: #01a7fd;
+    cursor: pointer;
+}
 </style>

@@ -24,4 +24,8 @@ export default {
     align-items: center;
     gap: 7.5px;
 }
+
+.add-btn-wrap:hover {
+    border: 2px solid #76d1ff;
+}
 </style>

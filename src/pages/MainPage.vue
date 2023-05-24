@@ -10,9 +10,10 @@
 
         <div class="children-wrap">
             <div class="children-header-and-btn">
-                <h3>Дети</h3>
-                <add-btn-comp>Добавить ребёнка</add-btn-comp>
+                <h3 class="children-header">Дети (макс. 5)</h3>
+                <add-btn-comp>Добавить ребенка</add-btn-comp>
             </div>
+            <add-child-comp />
         </div>
     </div>
 </template>
@@ -20,12 +21,14 @@
 <script>
 import InputComp from "@/components/InputComp.vue";
 import AddBtnComp from "@/components/buttons/AddBtnComp.vue";
+import AddChildComp from "@/components/AddChildComp.vue";
 
 export default {
     name: "main-page",
     components: {
         InputComp,
         AddBtnComp,
+        AddChildComp,
     },
     data() {
         return {
@@ -52,5 +55,11 @@ export default {
 .children-header-and-btn {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 11px;
+}
+
+.children-header {
+    margin-bottom: 0;
 }
 </style>
