@@ -1,19 +1,20 @@
-# alef-test-task
+# Тестовое задание на должность "Frontend-разработчик"
 
-## Project setup
-```
-npm install
-```
+## Использованные технологии
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Vue.js, Vuex, Vue Router, Javascript, uuid
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Ссылка на проект
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+https://igro.blog
+
+## Инструкция по запуску проекта
+
+1. Склонировать проект из репозитория на компьютер.
+2. Перейти в папку с проектом с помощью консоли и установить все зависимости командой "npm i".
+3. Запустить проект командой в консоли "vue serve".
+
+### Контакты для связи по всем вопросам
+
+• al.zotin@mail.ru\
+• Telegram A_Zotin
