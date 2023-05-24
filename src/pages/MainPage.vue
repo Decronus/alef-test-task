@@ -70,7 +70,7 @@ export default {
 
         saveParent() {
             const notEmptyChildren = this.children.filter((el) => !Object.values(el).includes(""));
-            const parent = { name: this.parentName, age: this.parentAge, children: notEmptyChildren };
+            const parent = { id: uuidv4(), name: this.parentName, age: this.parentAge, children: notEmptyChildren };
             this.$store.commit("addParent", parent);
             this.clearForm();
         },
@@ -105,7 +105,7 @@ export default {
 
 <style>
 .main-page-wrap {
-    width: 616px;
+    max-width: 616px;
     margin: 0 auto;
 }
 

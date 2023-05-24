@@ -1,10 +1,13 @@
 <template>
     <header-comp />
-    <router-view />
+    <div class="page-container">
+        <router-view />
+    </div>
 </template>
 
 <script>
 import HeaderComp from "./components/HeaderComp.vue";
+
 export default {
     components: { HeaderComp },
 };
@@ -37,5 +40,9 @@ h3 {
 p {
     font-size: 14px;
     font-weight: 400;
+}
+
+.page-container {
+    margin: 20px;
 }
 </style>

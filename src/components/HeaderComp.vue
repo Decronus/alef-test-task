@@ -87,8 +87,8 @@
             </svg>
         </div>
         <div class="header-menu-wrap">
-            <p>Форма</p>
-            <p>Превью</p>
+            <p @click="$router.push('/')">Форма</p>
+            <p @click="$router.push('/preview')">Превью</p>
         </div>
     </header>
 </template>
@@ -120,5 +120,13 @@ export default {
 .header-menu-wrap p:hover {
     color: #01a7fd;
     cursor: pointer;
+}
+
+@media (max-width: 886px) {
+    .header {
+        gap: 0;
+        justify-content: space-between;
+        padding: 20px;
+    }
 }
 </style>
