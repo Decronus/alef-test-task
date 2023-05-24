@@ -4,7 +4,7 @@
             <h3>Персональные данные</h3>
             <div class="personal-data-inputs">
                 <input-comp placeholder="Имя" @inputEmit="(value) => (name = value)" />
-                <input-comp placeholder="Возраст" @inputEmit="(value) => (age = value)" />
+                <input-comp placeholder="Возраст" @inputEmit="(value) => (age = value)" :onlyNumbers="true" />
             </div>
         </div>
     </div>

@@ -13,11 +13,29 @@ export default {
             required: true,
             type: String,
         },
+        onlyNumbers: {
+            type: Boolean,
+        },
     },
+
     data() {
         return {
             value: "",
         };
+    },
+
+    methods: {
+        emitInput() {
+            this.value = this.$refs.inputRef.value;
+            this.deleteNumbers();
+            this.$emit("inputEmit", this.value);
+        },
+
+        deleteNumbers() {
+            if (this.onlyNumbers) {
+                this.value = this.$refs.inputRef.value.replace(/\D/g, "");
+            }
+        },
     },
 };
 </script>
