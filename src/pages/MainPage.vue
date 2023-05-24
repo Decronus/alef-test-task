@@ -3,8 +3,13 @@
         <div class="personal-data-wrap">
             <h3>Персональные данные</h3>
             <div class="personal-data-inputs">
-                <input-comp placeholder="Имя" @inputEmit="(value) => (parentName = value)" />
-                <input-comp placeholder="Возраст" @inputEmit="(value) => (parentAge = value)" :onlyNumbers="true" />
+                <input-comp placeholder="Имя" @inputEmit="(value) => (parentName = value)" ref="nameInputRef" />
+                <input-comp
+                    placeholder="Возраст"
+                    @inputEmit="(value) => (parentAge = value)"
+                    :onlyNumbers="true"
+                    ref="ageInputRef"
+                />
             </div>
         </div>
 
@@ -16,13 +21,15 @@
 
             <add-child-comp
                 v-for="(child, index) in children"
-                :key="index"
+                :key="child.id"
                 :index="index"
                 @nameInputEmit="(value) => (children[index].name = value)"
                 @ageInputEmit="(value) => (children[index].age = value)"
                 @deleteChild="(index) => deleteChild(index)"
             />
-            <primary-btn-comp v-if="children.length > 0" :disabled="checkFillInputs">Сохранить</primary-btn-comp>
+            <primary-btn-comp v-if="children.length > 0" :disabled="checkFillInputs" @click="saveParent"
+                >Сохранить</primary-btn-comp
+            >
         </div>
     </div>
 </template>
@@ -32,6 +39,7 @@ import InputComp from "@/components/InputComp.vue";
 import AddBtnComp from "@/components/buttons/AddBtnComp.vue";
 import AddChildComp from "@/components/AddChildComp.vue";
 import PrimaryBtnComp from "@/components/buttons/PrimaryBtnComp.vue";
+import { v4 as uuidv4 } from "uuid";
 
 export default {
     name: "main-page",
@@ -52,12 +60,27 @@ export default {
 
     methods: {
         addChild() {
-            const child = { name: "", age: "" };
+            const child = { id: uuidv4(), name: "", age: "" };
             this.children.push(child);
         },
 
         deleteChild(index) {
             this.children = this.children.filter((el) => this.children.indexOf(el) !== index);
+        },
+
+        saveParent() {
+            const notEmptyChildren = this.children.filter((el) => !Object.values(el).includes(""));
+            const parent = { name: this.parentName, age: this.parentAge, children: notEmptyChildren };
+            this.$store.commit("addParent", parent);
+            this.clearForm();
+        },
+
+        clearForm() {
+            this.parentName = "";
+            this.parentAge = "";
+            this.$refs.nameInputRef.clearInput();
+            this.$refs.ageInputRef.clearInput();
+            this.children = [];
         },
     },
 
@@ -72,7 +95,9 @@ export default {
         },
 
         checkFillInputs() {
-            return this.children.find((el) => el.name !== "");
+            const parentFill = !!this.parentName && !!this.parentAge;
+            const childFill = !!this.children.find((el) => !Object.values(el).includes(""));
+            return parentFill && childFill;
         },
     },
 };

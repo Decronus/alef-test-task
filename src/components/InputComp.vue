@@ -36,6 +36,10 @@ export default {
                 this.value = this.$refs.inputRef.value.replace(/\D/g, "");
             }
         },
+
+        clearInput() {
+            this.value = "";
+        },
     },
 };
 </script>
