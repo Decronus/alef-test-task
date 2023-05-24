@@ -3,17 +3,26 @@
         <div class="personal-data-wrap">
             <h3>Персональные данные</h3>
             <div class="personal-data-inputs">
-                <input-comp placeholder="Имя" @inputEmit="(value) => (name = value)" />
-                <input-comp placeholder="Возраст" @inputEmit="(value) => (age = value)" :onlyNumbers="true" />
+                <input-comp placeholder="Имя" @inputEmit="(value) => (parentName = value)" />
+                <input-comp placeholder="Возраст" @inputEmit="(value) => (parentAge = value)" :onlyNumbers="true" />
             </div>
         </div>
 
         <div class="children-wrap">
             <div class="children-header-and-btn">
-                <h3 class="children-header">Дети (макс. 5)</h3>
-                <add-btn-comp>Добавить ребенка</add-btn-comp>
+                <h3 class="children-header" :style="childrenBlockVisibility">Дети (макс. 5)</h3>
+                <add-btn-comp @click="addChild" v-if="children.length < 5">Добавить ребенка</add-btn-comp>
             </div>
-            <add-child-comp />
+
+            <add-child-comp
+                v-for="(child, index) in children"
+                :key="index"
+                :index="index"
+                @nameInputEmit="(value) => (children[index].name = value)"
+                @ageInputEmit="(value) => (children[index].age = value)"
+                @deleteChild="(index) => deleteChild(index)"
+            />
+            <primary-btn-comp v-if="children.length > 0">Сохранить</primary-btn-comp>
         </div>
     </div>
 </template>
@@ -22,6 +31,7 @@
 import InputComp from "@/components/InputComp.vue";
 import AddBtnComp from "@/components/buttons/AddBtnComp.vue";
 import AddChildComp from "@/components/AddChildComp.vue";
+import PrimaryBtnComp from "@/components/buttons/PrimaryBtnComp.vue";
 
 export default {
     name: "main-page",
@@ -29,12 +39,32 @@ export default {
         InputComp,
         AddBtnComp,
         AddChildComp,
+        PrimaryBtnComp,
     },
+
     data() {
         return {
-            name: "",
-            age: "",
+            parentName: "",
+            parentAge: "",
+            children: [],
         };
+    },
+
+    methods: {
+        addChild() {
+            const child = { name: "", age: "" };
+            this.children.push(child);
+        },
+
+        deleteChild(index) {
+            this.children = this.children.filter((el) => this.children.indexOf(el) !== index);
+        },
+    },
+
+    computed: {
+        childrenBlockVisibility() {
+            return { opacity: +(this.children.length !== 0) };
+        },
     },
 };
 </script>
@@ -50,6 +80,11 @@ export default {
     flex-direction: column;
     gap: 10px;
     margin-bottom: 33px;
+}
+
+.children-wrap {
+    display: flex;
+    flex-direction: column;
 }
 
 .children-header-and-btn {

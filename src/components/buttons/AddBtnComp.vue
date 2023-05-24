@@ -23,6 +23,7 @@ export default {
     display: flex;
     align-items: center;
     gap: 7.5px;
+    align-self: flex-end;
 }
 
 .add-btn-wrap:hover {
