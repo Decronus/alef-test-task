@@ -11,7 +11,7 @@
         <div class="children-wrap">
             <div class="children-header-and-btn">
                 <h3 class="children-header" :style="childrenBlockVisibility">Дети (макс. 5)</h3>
-                <add-btn-comp @click="addChild" v-if="children.length < 5">Добавить ребенка</add-btn-comp>
+                <add-btn-comp :style="addChildBtnVisibility" @click="addChild">Добавить ребенка</add-btn-comp>
             </div>
 
             <add-child-comp
@@ -22,7 +22,7 @@
                 @ageInputEmit="(value) => (children[index].age = value)"
                 @deleteChild="(index) => deleteChild(index)"
             />
-            <primary-btn-comp v-if="children.length > 0">Сохранить</primary-btn-comp>
+            <primary-btn-comp v-if="children.length > 0" :disabled="checkFillInputs">Сохранить</primary-btn-comp>
         </div>
     </div>
 </template>
@@ -64,6 +64,15 @@ export default {
     computed: {
         childrenBlockVisibility() {
             return { opacity: +(this.children.length !== 0) };
+        },
+
+        addChildBtnVisibility() {
+            const visible = +(this.children.length < 5);
+            return { opacity: visible, pointerEvents: visible ? null : "none" };
+        },
+
+        checkFillInputs() {
+            return this.children.find((el) => el.name !== "");
         },
     },
 };

@@ -1,5 +1,5 @@
 <template>
-    <div class="primary-btn-wrap">
+    <div class="primary-btn-wrap" :style="disabledStyle">
         <slot></slot>
     </div>
 </template>
@@ -7,6 +7,18 @@
 <script>
 export default {
     name: "primary-btn-comp",
+    props: {
+        disabled: {
+            required: true,
+            type: Boolean,
+        },
+    },
+
+    computed: {
+        disabledStyle() {
+            return this.disabled ? null : { background: "#DDDDDD", pointerEvents: "none" };
+        },
+    },
 };
 </script>
 
@@ -19,5 +31,11 @@ export default {
     border-radius: 100px;
     color: #ffffff;
     align-self: flex-start;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.primary-btn-wrap:hover {
+    background: #2bb8ff;
 }
 </style>
