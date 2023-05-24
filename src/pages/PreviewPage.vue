@@ -49,11 +49,14 @@ export default {
     margin: 0 auto;
 }
 
+.preview-page-wrap > div:not(:last-child) {
+    margin-bottom: 100px;
+}
+
 .preview-personal-and-children {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 100px;
 }
 
 .preview-personal-data {

@@ -3,13 +3,15 @@
     <div class="page-container">
         <router-view />
     </div>
+    <footer-comp />
 </template>
 
 <script>
+import FooterComp from "./components/FooterComp.vue";
 import HeaderComp from "./components/HeaderComp.vue";
 
 export default {
-    components: { HeaderComp },
+    components: { HeaderComp, FooterComp },
 };
 </script>
 
@@ -27,8 +29,12 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     width: 100vw;
+    min-height: 100vh;
     text-align: left;
     color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 h3 {
@@ -43,6 +49,6 @@ p {
 }
 
 .page-container {
-    margin: 20px;
+    margin: 0 20px 100px 20px;
 }
 </style>
