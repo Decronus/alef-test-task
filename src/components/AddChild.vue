@@ -11,7 +11,7 @@ import InputComp from "./InputComp.vue";
 
 export default {
     components: { InputComp },
-    name: "add-child-comp",
+    name: "add-child",
     props: {
         index: {
             required: true,

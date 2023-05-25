@@ -48,6 +48,10 @@ p {
     font-weight: 400;
 }
 
+button {
+    border: 0;
+}
+
 .page-container {
     margin: 0 20px 100px 20px;
 }

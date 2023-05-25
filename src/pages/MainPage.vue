@@ -16,10 +16,10 @@
         <div class="children-wrap">
             <div class="children-header-and-btn">
                 <h3 class="children-header" :style="childrenBlockVisibility">Дети (макс. 5)</h3>
-                <add-btn-comp :style="addChildBtnVisibility" @click="addChild">Добавить ребенка</add-btn-comp>
+                <add-button :style="addChildBtnVisibility" @click="addChild">Добавить ребенка</add-button>
             </div>
 
-            <add-child-comp
+            <add-child
                 v-for="(child, index) in children"
                 :key="child.id"
                 :index="index"
@@ -27,8 +27,8 @@
                 @ageInputEmit="(value) => (children[index].age = value)"
                 @deleteChild="(index) => deleteChild(index)"
             />
-            <primary-btn-comp v-if="children.length > 0" :disabled="!checkFillInputs" @click="saveParent"
-                >Сохранить</primary-btn-comp
+            <primary-button v-if="children.length > 0" :disabled="!checkFillInputs" @click="saveParent"
+                >Сохранить</primary-button
             >
         </div>
     </div>
@@ -36,18 +36,18 @@
 
 <script>
 import InputComp from "@/components/InputComp.vue";
-import AddBtnComp from "@/components/buttons/AddBtnComp.vue";
-import AddChildComp from "@/components/AddChildComp.vue";
-import PrimaryBtnComp from "@/components/buttons/PrimaryBtnComp.vue";
+import AddChild from "@/components/AddChild.vue";
+import AddButton from "@/components/buttons/AddButton.vue";
+import PrimaryButton from "@/components/buttons/PrimaryButton.vue";
 import { v4 as uuidv4 } from "uuid";
 
 export default {
     name: "main-page",
     components: {
         InputComp,
-        AddBtnComp,
-        AddChildComp,
-        PrimaryBtnComp,
+        AddButton,
+        PrimaryButton,
+        AddChild,
     },
 
     data() {

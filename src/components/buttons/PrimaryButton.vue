@@ -1,12 +1,12 @@
 <template>
-    <div class="primary-btn-wrap" :style="disabledStyle">
+    <button class="primary-button" :style="disabledStyle">
         <slot></slot>
-    </div>
+    </button>
 </template>
 
 <script>
 export default {
-    name: "primary-btn-comp",
+    name: "primary-button",
     props: {
         disabled: {
             required: true,
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style>
-.primary-btn-wrap {
+.primary-button {
     display: flex;
     align-items: center;
     padding: 16px 20px;
@@ -35,7 +35,7 @@ export default {
     margin-top: 20px;
 }
 
-.primary-btn-wrap:hover {
+.primary-button:hover {
     background: #2bb8ff;
 }
 </style>
