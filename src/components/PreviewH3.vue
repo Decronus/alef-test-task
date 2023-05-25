@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: "preview-h3-comp",
+    name: "preview-h3",
 };
 </script>
 

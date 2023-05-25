@@ -1,14 +1,14 @@
 <template>
     <button class="add-btn">
-        <plus-icon-comp />
+        <plus-icon />
         <slot></slot>
     </button>
 </template>
 
 <script>
-import PlusIconComp from "../icons/PlusIconComp.vue";
+import PlusIcon from "@/components/icons/PlusIcon.vue";
 export default {
-    components: { PlusIconComp },
+    components: { PlusIcon },
     name: "add-button",
 };
 </script>

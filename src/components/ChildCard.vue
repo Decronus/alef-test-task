@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import PreviewH3Comp from "./PreviewH3Comp.vue";
+import PreviewH3Comp from "./PreviewH3.vue";
 export default {
     name: "child-card-wrap",
     components: { PreviewH3Comp },

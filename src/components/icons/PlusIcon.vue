@@ -13,7 +13,7 @@
 
 <script>
 export default {
-    name: "plus-icon-comp",
+    name: "plus-icon",
 };
 </script>
 
